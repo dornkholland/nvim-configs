@@ -10,6 +10,19 @@ vim.opt.expandtab = true
 vim.opt.smartindent = true
 vim.opt.hidden = true
 
+vim.g.clipboard = {
+  name = "wl-clipboard",
+  copy = {
+    ["+"] = "wl-copy",
+    ["*"] = "wl-copy --primary",
+  },
+  paste = {
+    ["+"] = "wl-paste --no-newline",
+    ["*"] = "wl-paste --no-newline --primary",
+  },
+  cache_enabled = 0,
+}
+
 vim.opt.wrap = false
 
 vim.opt.ignorecase = true
@@ -24,6 +37,10 @@ vim.opt.splitright = true
 vim.opt.splitbelow = true
 
 vim.opt.scrolloff = 8
+
+-- in your init.lua
+vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 
 -- Basic keymaps
 vim.keymap.set("n", "<leader>w", ":w<CR>")
