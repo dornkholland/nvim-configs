@@ -1,8 +1,17 @@
 -- Plugins
 require("lazy").setup({
   {
-    "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate",
+      "nvim-treesitter/nvim-treesitter",
+      build = ":TSUpdate",
+      opts = {
+        auto_install = true,
+        highlight = {
+          enable = true,
+        },
+        indent = {
+          enable = true,
+        }
+      },
   },
 
   {
@@ -56,5 +65,15 @@ require("lazy").setup({
       "folke/which-key.nvim",
       event = "VeryLazy",
       opts = {},
+    },
+    {
+      "folke/tokyonight.nvim",
+      priority = 1000,
+      config = function()
+        require("tokyonight").setup({
+          transparent = true,
+        })
+        vim.cmd.colorscheme("tokyonight")
+      end,
     },
 })
